@@ -13,31 +13,57 @@
         <h1 class="text-center">Welcome to <span>Payonner Bank</span></h1>
         <div class="login-form">
             <h4>Login</h4>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="Enter your Email">
             <br>
-            <input type="password" class="form-control">
+            <input type="password" class="form-control" placeholder="Enter your Password ">
             <br>
             <button id="login" class="btn btn-success">Enter</button>
         </div>
     </div>
     <div id="trans-section">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="deposite status">
-                    <h5>Deposite</h5>
-                    <h2>$00</h2>
+        <div class="status-part">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="deposit status">
+                        <h5>Deposite</h5>
+                        <h2>$<span id="initialDepositAmount">00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="withdraw status">
+                        <h5>Withdraw</h5>
+                        <h2>$<span id="initialWithdrawAmount" >00</span></h2>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="balance status">
+                        <h5>Balance</h5>
+                        <h2>$<span id="previousBalance">1240</span></h2>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="withdraw status">
-                    <h5>Withdraw</h5>
-                    <h2>$00</h2>
+        </div>
+        <div class="card-part">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="deposit-card card">
+                        <h4>Deposit</h4>
+                        <input id="depositAmount" class="form-control" type="text" placeholder="$ amount you want to deposit">
+                        <br>
+                        <div class="btn-part">
+                            <button id="depositBtn" class="btn btn-success">Deposit</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="balance status">
-                    <h5>Balance</h5>
-                    <h2>$1240</h2>
+                <div class="col-md-6">
+                    <div class="withdraw-card card">
+                        <h4>Withdraw</h4>
+                        <input id="withdrawAmount" class="form-control" type="text" placeholder="$ amount you want to withdraw">
+                        <br>
+                        <div class="btn-part">
+                            <button id="withdrawBtn" class="btn btn-success">Withdraw</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,6 +75,40 @@
             loginArea.style.display="none";
             const transArea=document.getElementById('trans-section');
             transArea.style.display="block";
+        })
+        const depositBtn=document.getElementById('depositBtn');
+        depositBtn.addEventListener('click',function(){
+            const depositAmount = parseFloat(document.getElementById("depositAmount").value);
+
+            const initialDepositAmount= parseFloat(document.getElementById('initialDepositAmount').innerText);
+
+            const totalDeposit= depositAmount+initialDepositAmount;
+            document.getElementById('initialDepositAmount').innerText=totalDeposit;
+            document.getElementById('depositAmount').value='';
+
+            const previousBalance= parseFloat(document.getElementById('previousBalance').innerText);
+            updateBalance=previousBalance+depositAmount;
+
+            document.getElementById('previousBalance').innerText=updateBalance;
+        })
+        const withdrawBtn= document.getElementById('withdrawBtn');
+        withdrawBtn.addEventListener('click',function(){
+            const withdrawAmount =parseFloat(document.getElementById('withdrawAmount').value);
+            console.log(withdrawAmount);
+            
+            const initialWithdrawAmount= parseFloat(document.getElementById('initialWithdrawAmount').innerText);
+            console.log(initialWithdrawAmount);
+
+            const totalWithdraw=withdrawAmount+initialWithdrawAmount;
+
+            document.getElementById('initialWithdrawAmount').innerText=totalWithdraw;
+
+            document.getElementById('withdrawAmount').value='';
+            
+            const previousBalance= parseFloat(document.getElementById('previousBalance').innerText);
+            updateBalance=previousBalance-withdrawAmount;
+
+            document.getElementById('previousBalance').innerText=updateBalance;
         })
     </script>
 </body>

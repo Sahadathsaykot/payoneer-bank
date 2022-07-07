@@ -1,11 +1,17 @@
 body{
     padding: 12%;
+    background-image:linear-gradient(rgba(0,0,0,.7),rgba(0,0,0,.7)) ,url(images/money\ bg.jpg);
+    background-size: cover;
+}
+h1{
+    color: white;
 }
 .login-form{
     margin-top: 50px;
     border-radius: 20px;
     padding: 50px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background-color: rgb(247, 247, 247);
 }
 span{
     font-weight: 700;
@@ -18,7 +24,7 @@ span{
     border-radius: 10px;
     color: white;
 }
-.deposite{
+.deposit{
     background-color: slateblue;
 }
 .withdraw{
@@ -26,4 +32,14 @@ span{
 }
 .balance{
     background-color: orange;
+}
+.card-part{
+    margin-top: 10%;
+}
+.card{
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    background-color: rgb(247, 247, 247);
+    border: none;
+    padding: 10%;
+    border-radius: 10px;
 }
